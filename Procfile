@@ -1,1 +1,1 @@
-web: gunicorn dadoscnpj.wsgi
+web: gunicorn DadosCNPJ.wsgi
