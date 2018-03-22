@@ -1,1 +1,1 @@
-web: gunicorn dadoscnpj:app
+web: python3 manage.py runserver
