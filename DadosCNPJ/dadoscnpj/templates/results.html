@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Busca CNPJs</title>
+</head>
+<style>
+textarea {
+  resize: none;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button:hover{
+  background-color: #3e8e41
+}
+table, th, td {
+    vertical-align: top;
+}
+</style>
+<body>
+{% load cnpj_extras %}
+<div class='main'>
+  {% for cnpj in cnpjs %}
+  <table>
+  <tr>
+    <!-- {% ifequal forloop.counter|modulo:2 0 %}
+  </tr>
+  <tr>
+    {% endifequal %} -->
+    <td>
+    <h3>{{cnpj.attrs|get_item:'Razão Social'}}</h3></td></tr><tr><td>
+    <ul>
+      <li>CNPJ: {{cnpj.attrs|get_item:'CNPJ'}}</li>
+      <li>Razão Social: {{cnpj.attrs|get_item:'Razão Social'}}</li>
+      {{cnpj.attrs|isnone:'Nome Fantasia'}}
+      <li>Data de Abertura: {{cnpj.attrs|get_item:'Data de Abertura'}}</li>
+      <li>Tipo: {{cnpj.attrs|get_item:'Tipo'}}</li>
+      <li>Situação: {{cnpj.attrs|get_item:'Situação'}}</li>
+      <li>Natureza Jurídica: {{cnpj.attrs|get_item:'Natureza Jurídica'}}</li>
+      <li>Capital Social: {{cnpj.attrs|get_item:'Capital Social'}}</li>
+    </ul></td><td>
+    <h4>Atividades</h4>
+    <ul>
+      <li>Atividade Principal: {{cnpj.attrs|get_item:'Atividade Principal'}}</li>
+      {{cnpj.attrs|secundarias}}
+    </ul></td></tr><tr><td>
+    <h4>Endereço</h4>
+    <ul>
+      <li>CEP: {{cnpj.attrs|get_item:'CEP'}}</li>
+      <li>Logradouro: {{cnpj.attrs|get_item:'Logradouro'}}</li>
+      <li>Número: {{cnpj.attrs|get_item:'Número'}}</li>
+      {{cnpj.attrs|isnone:'Complemento'}}
+      <li>Bairro: {{cnpj.attrs|get_item:'Bairro'}}</li>
+      <li>Município: {{cnpj.attrs|get_item:'Município'}}</li>
+      <li>UF: {{cnpj.attrs|get_item:'UF'}}</li>
+    </ul></td><td>
+    <h4>Contatos</h4>
+    <ul>
+      {{cnpj.attrs|isnone:'Telefone'}}
+      {{cnpj.attrs|isnone:'E-mail'}}
+    </ul></td></tr><tr><td>
+    {{cnpj.attrs|socios}}
+  </td>
+</tr></table>
+<hr>
+  {% endfor %}
+</tr>
+</div>
+</body>
+</html>
