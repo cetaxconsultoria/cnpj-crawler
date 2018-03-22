@@ -1,5 +1,4 @@
 alabaster==0.7.10
-apparmor==2.10.95
 appdirs==1.4.0
 apturl==0.5.2
 arrow==0.12.1
@@ -82,7 +81,6 @@ kmodes==0.7
 language-selector==0.1
 lazy-object-proxy==1.3.1
 liac-arff==2.1.1
-LibAppArmor==2.10.95
 lockfile==0.12.2
 louis==2.6.4
 lxml==3.5.0
